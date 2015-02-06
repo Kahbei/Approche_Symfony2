@@ -1,0 +1,11 @@
+oklm_app_comment:
+    resource: "@OKLMAppBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
+
+oklm_app_article:
+    resource: "@OKLMAppBundle/Resources/config/routing/article.yml"
+    prefix:   /article
+
+oklm_app_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: OKLMAppBundle:Default:index }

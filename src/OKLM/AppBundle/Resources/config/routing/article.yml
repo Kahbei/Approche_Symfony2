@@ -1,0 +1,22 @@
+article:
+    path:     /
+    defaults: { _controller: "OKLMAppBundle:Article:index" }
+
+article_create:
+    path:     /create
+    defaults: { _controller: "OKLMAppBundle:Article:create" }
+    requirements: { _method: get|post }
+
+article_show:
+    path:     /{slug}
+    defaults: { _controller: "OKLMAppBundle:Article:show" }
+
+article_update:
+    path:     /{id}/update
+    defaults: { _controller: "OKLMAppBundle:Article:update" }
+    requirements: { _method: get|post|put }
+
+article_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "OKLMAppBundle:Article:delete" }
+    requirements: { _method: post|delete }

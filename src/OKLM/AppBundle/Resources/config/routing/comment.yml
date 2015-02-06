@@ -1,0 +1,22 @@
+comment:
+    path:     /
+    defaults: { _controller: "OKLMAppBundle:Comment:index" }
+
+comment_show:
+    path:     /{id}/show
+    defaults: { _controller: "OKLMAppBundle:Comment:show" }
+
+comment_create:
+    path:     /create
+    defaults: { _controller: "OKLMAppBundle:Comment:create" }
+    requirements: { _method: get|post }
+
+comment_update:
+    path:     /{id}/update
+    defaults: { _controller: "OKLMAppBundle:Comment:update" }
+    requirements: { _method: get|post|put }
+
+comment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "OKLMAppBundle:Comment:delete" }
+    requirements: { _method: post|delete }

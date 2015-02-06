@@ -1,0 +1,41 @@
+parameters:
+    oklm_app.article.listener.class: OKLM\AppBundle\Listener\ArticleListener
+    oklm_app.article.manager.class: OKLM\AppBundle\Manager\ArticleManager
+    oklm_app.article.entity.class: OKLM\AppBundle\Entity\Article
+    oklm_app.article.form_type.class: OKLM\AppBundle\Form\ArticleType
+    oklm_app.comment.entity.class: OKLM\AppBundle\Entity\Comment
+    oklm_app.comment.manager.class: OKLM\AppBundle\Manager\CommentManager
+    oklm_app.comment.form_type.class: OKLM\AppBundle\Form\CommentType
+
+services:
+    oklm_app.example.listener:
+       class: %oklm_app.article.listener.class%
+       tags:
+           - { name: doctrine.event_listener, event: prePersist }
+           - { name: doctrine.event_listener, event: preUpdate }
+
+    oklm_app.article.manager:
+       class: %oklm_app.article.manager.class%
+       arguments:
+           - @doctrine.orm.entity_manager
+           - %oklm_app.article.entity.class%
+
+    oklm_app.article.form_type:
+       class: %oklm_app.article.form_type.class%
+       tags:
+          - { name: form.type, alias: oklm_appbundle_article }
+
+    oklm_app.comment.manager:
+         class: %oklm_app.comment.manager.class%
+         arguments:
+             - @doctrine.orm.entity_manager
+             - %oklm_app.comment.entity.class%
+
+    oklm_app.comment.form_type:
+          class: %oklm_app.comment.form_type.class%
+          tags:
+             - { name: form.type, alias: oklm_appbundle_comment }
+
+#    oklm_app.example:
+#        class: OKLM\AppBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
